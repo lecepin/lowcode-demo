@@ -4,24 +4,28 @@ import { Loading } from '@alifd/next';
 import { buildComponents, assetBundle, AssetLevel, AssetLoader } from '@alilc/lowcode-utils';
 import ReactRenderer from '@alilc/lowcode-react-renderer';
 import { injectComponents } from '@alilc/lowcode-plugin-inject';
-import { createFetchHandler } from '@alilc/lowcode-datasource-fetch-handler'
+import { createFetchHandler } from '@alilc/lowcode-datasource-fetch-handler';
 
 import { getProjectSchemaFromLocalStorage, getPackagesFromLocalStorage } from './universal/utils';
 
 const getScenarioName = function () {
   if (location.search) {
-    return new URLSearchParams(location.search.slice(1)).get('scenarioName') || 'index'
+    return new URLSearchParams(location.search.slice(1)).get('scenarioName') || 'index';
   }
   return 'index';
-}
+};
 
 const SamplePreview = () => {
   const [data, setData] = useState({});
 
   async function init() {
+    // --
     const scenarioName = getScenarioName();
-    const packages = getPackagesFromLocalStorage(scenarioName);
-    const projectSchema = getProjectSchemaFromLocalStorage(scenarioName);
+    const packages =
+      (window as any).g_config.___packages || getPackagesFromLocalStorage(scenarioName);
+    const projectSchema =
+      (window as any).g_config.___schema || getProjectSchemaFromLocalStorage(scenarioName);
+    // ==
     const { componentsMap: componentsMapArray, componentsTree } = projectSchema;
     const componentsMap: any = {};
     componentsMapArray.forEach((component: any) => {
@@ -68,8 +72,8 @@ const SamplePreview = () => {
         components={components}
         appHelper={{
           requestHandlersMap: {
-            fetch: createFetchHandler()
-          }
+            fetch: createFetchHandler(),
+          },
         }}
       />
     </div>

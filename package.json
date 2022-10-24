@@ -1,6 +1,6 @@
 {
-  "name": "@alilc/lowcode-demo",
-  "version": "1.0.27",
+  "name": "lowcode-demo-preview",
+  "version": "1.0.28",
   "description": "Low-Code Engine 低代码搭建引擎 Demo 项目",
   "repository": "git@github.com:alibaba/lowcode-demo.git",
   "license": "MIT",
@@ -8,7 +8,6 @@
   "scripts": {
     "start": "build-scripts start --disable-reload --port 5556",
     "build": "build-scripts build",
-    "prepublishOnly": "npm run build",
     "pub": "node ./scripts/watchdog.js && npm pub"
   },
   "files": [
