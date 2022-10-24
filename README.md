@@ -4,7 +4,7 @@
 https://unpkg.com/lowcode-demo-preview/build/js/preview.js
 
 # OR
-https://cdn.jsdelivr.net/npm/lowcode-demo-preview@1.0.28/build/js/preview.js
+https://cdn.jsdelivr.net/npm/lowcode-demo-preview/build/js/preview.js
 ```
 
 Edit and save in the [editor](https://lowcode-engine.cn/demo/index.html), and then copy the corresponding content from LocalStorage:
